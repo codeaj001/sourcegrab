@@ -1,109 +1,80 @@
-# Rust Social Video Downloader CLI
+# URL Video Downloader Bot
 
-## Features
+A powerful, fast, and feature-rich Telegram bot written in Rust that allows users to download videos and audio from various platforms (YouTube, TikTok, Twitter, etc.) simply by sending a link.
 
-- ✅ Download from any URL supported by yt-dlp (YouTube, TikTok, Twitter, etc.)
-- ✅ Select multiple formats per video (`mp3`, `mp4`, `webm`)
-- ✅ Interactive command-line prompts
+## Highlights
 
----
+- **High Performance.** Built on top of `teloxide` and `tokio`, this bot handles multiple downloads asynchronously with ease, ensuring the bot remains responsive even during heavy loads.
+- **Quality Control.** Users are not stuck with a default. The bot uses interactive dialogues to let users choose between **1080p**, **720p**, **480p**, or **MP3** audio extraction.
+- **Broad Support.** Powered by `yt-dlp`, it supports downloading from hundreds of websites out of the box.
+- **Privacy Focused.** No logs are kept, and files are processed temporarily and deleted immediately after upload.
 
-## Requirements
+## Setting up your environment
 
-Make sure the following tools are installed on your system:
+1. **Download Rust.**
+   Ensure you have the latest stable version of Rust installed.
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
 
-### 1. Rust (with `cargo`)
+2. **Install External Dependencies.**
+   The bot relies on `yt-dlp` for downloading and `ffmpeg` for processing.
+   ```bash
+   # Linux (Debian/Ubuntu)
+   sudo apt install ffmpeg python3
+   sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+   sudo chmod a+rx /usr/local/bin/yt-dlp
+   ```
 
-Install Rust using [rustup](https://rustup.rs/):
+3. **Create a Telegram Bot.**
+   Talk to [@BotFather](https://t.me/BotFather) to create a new bot and get your token.
 
-```bash
-curl https://sh.rustup.rs -sSf | sh
+4. **Initialize the Token.**
+   Set the `TELOXIDE_TOKEN` environment variable:
+   ```bash
+   # Unix-like
+   export TELOXIDE_TOKEN=<Your token here>
+   
+   # Windows PowerShell
+   $env:TELOXIDE_TOKEN="<Your token here>"
+   ```
 
-Check installation:
+5. **Run the Bot.**
+   ```bash
+   cargo run
+   ```
 
-```bash
-rustc --version
-```
+## Usage
 
----
+**Commands**
+Commands are strongly typed and parsed automatically.
+- `/start` - Initialize the bot and welcome message.
+- `/help` - Display help information.
 
-### 2. yt-dlp
+**Downloading**
+1. Send a video URL (e.g., from YouTube or TikTok) to the bot.
+2. The bot will present an interactive menu.
+3. Select your desired quality (e.g., `1080p` or `Audio (MP3)`).
+4. The bot downloads, processes, and sends the file to you.
 
-Install via pip:
+## Deployment (Docker)
 
-```bash
-pip install yt-dlp
-```
-
-Or use the binary (Linux/macOS):
-
-```bash
-wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
-chmod +x yt-dlp
-sudo mv yt-dlp /usr/local/bin/
-```
-
----
-
-### 3. FFmpeg
-
-Required for format conversion (`mp3`, `mp4`, etc.).
-
-#### Ubuntu/Debian:
-
-```bash
-sudo apt install ffmpeg
-```
-
-#### macOS (using Homebrew):
-
-```bash
-brew install ffmpeg
-```
-
----
-
-## How to Run
-
-1. **Clone or download the project**
+This project includes a `Dockerfile` for easy deployment on platforms like Railway or Fly.io.
 
 ```bash
-git clone https://github.com/codeaj001/urlvideodownloader.git
-cd urlvideodownloader
+# Build
+docker build -t video-bot .
+
+# Run
+docker run -d -e TELOXIDE_TOKEN=<your_token> video-bot
 ```
 
-2. **Build and run it**
+## Privacy Policy
 
-```bash
-cargo run
-```
+1. **Data Collection**: We do not store any user data, logs, or download history.
+2. **File Handling**: Videos and audio files are processed temporarily on our servers for the purpose of downloading and sending them to you. They are automatically deleted immediately after being sent.
+3. **Open Source**: This bot is open source. You can review the code to verify our privacy claims.
 
-3. **Follow the prompts**
+## Contributing
 
-Example terminal session:
-
-```
-Welcome to Video Downloader 
-Enter video URL (or press ENTER to finish): {Paste URL here}
-Select one or more formats:
-> [ ] mp4
-  [ ] mp3
-  [ ] webm
-{click Space button to choose format}
-```
-
-Done! Your downloads will be saved in the selected folder.
-
----
-
-## 🧩 Open to Extension
-
-This tool is beginner-friendly and designed for hacking and extension.
-
-Ideas for new features:
-
-* [ ] Ask for another URL
-* [ ]
-* [ ] 
-
-Feel free to fork, PR, or suggest ideas!
+Feel free to open issues or submit PRs to improve the bot!
