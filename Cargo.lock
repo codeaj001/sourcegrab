@@ -193,6 +193,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "dotenv"
+version = "0.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "77c90badedccf4105eca100756a0b1289e191f6fcbdadd3cee1d2f614f97da8f"
+
+[[package]]
 name = "dptree"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -688,7 +694,7 @@ checksum = "3640c1c38b8e4e43584d8df18be5fc6b0aa314ce6ebf51b53313d4306cca8e46"
 dependencies = [
  "hermit-abi",
  "libc",
- "windows-sys 0.60.2",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -1358,6 +1364,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "sourcegrab"
+version = "0.1.0"
+dependencies = [
+ "dialoguer",
+ "dotenv",
+ "indicatif",
+ "log",
+ "pretty_env_logger",
+ "reqwest",
+ "teloxide",
+ "tokio",
+ "uuid",
+]
+
+[[package]]
 name = "stable_deref_trait"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1702,20 +1723,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "urlvideodownloader"
-version = "0.1.0"
-dependencies = [
- "dialoguer",
- "indicatif",
- "log",
- "pretty_env_logger",
- "reqwest",
- "teloxide",
- "tokio",
- "uuid",
-]
-
-[[package]]
 name = "utf8_iter"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1884,7 +1891,7 @@ version = "0.1.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
 dependencies = [
- "windows-sys 0.60.2",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]

@@ -1,4 +1,4 @@
-# URL Video Downloader Bot
+# SourceGrab
 
 A powerful, fast, and feature-rich Telegram bot written in Rust that allows users to download videos and audio from various platforms (YouTube, TikTok, Twitter, etc.) simply by sending a link.
 
@@ -74,6 +74,7 @@ docker run -d -e TELOXIDE_TOKEN=<your_token> video-bot
 1. **Data Collection**: We do not store any user data, logs, or download history.
 2. **File Handling**: Videos and audio files are processed temporarily on our servers for the purpose of downloading and sending them to you. They are automatically deleted immediately after being sent.
 3. **Open Source**: This bot is open source. You can review the code to verify our privacy claims.
+   **Source Code**: https://github.com/codeaj001/sourcegrab
 
 ## Contributing
 

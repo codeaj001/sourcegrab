@@ -33,10 +33,11 @@ RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o 
     && chmod a+rx /usr/local/bin/yt-dlp
 
 # Copy the binary from the builder stage
-COPY --from=builder /app/target/release/urlvideodownloader /app/urlvideodownloader
+COPY --from=builder /app/target/release/sourcegrab /app/sourcegrab
 
 # Create downloads directory
 RUN mkdir downloads
 
 # Run the binary
-CMD ["./urlvideodownloader"]
+ENV RUST_LOG=info
+CMD ["./sourcegrab"]

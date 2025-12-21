@@ -31,6 +31,7 @@ enum Command {
 
 #[tokio::main]
 async fn main() {
+    dotenv::dotenv().ok();
     pretty_env_logger::init();
     log::info!("Starting bot...");
 
@@ -147,7 +148,11 @@ async fn process_download(bot: Bot, chat_id: ChatId, url: String, quality: Strin
     // Ensure downloads directory exists
     tokio::fs::create_dir_all("downloads").await?;
 
-    let mut cmd = TokioCommand::new("yt-dlp");
+    let mut cmd = if std::path::Path::new("./yt-dlp").exists() {
+        TokioCommand::new("./yt-dlp")
+    } else {
+        TokioCommand::new("yt-dlp")
+    };
     
     match quality.as_str() {
         "mp3" => {
