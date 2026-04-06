@@ -1372,6 +1372,7 @@ dependencies = [
  "indicatif",
  "log",
  "pretty_env_logger",
+ "regex",
  "reqwest",
  "teloxide",
  "tokio",

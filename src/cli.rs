@@ -9,6 +9,7 @@ use indicatif::{ProgressBar, ProgressStyle};
 pub fn run_cli() {
     println!("\nWelcome to SourceGrab");
 
+    // A mut vector for downloads
     let mut downloads = Vec::new();
     let format_options = vec!["mp4", "mp3", "webm"];
 
